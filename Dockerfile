@@ -13,13 +13,11 @@ RUN mkdir /var/run/sshd && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "export VISIBLE=now" >> /etc/profile
 
-RUN runuser -l ubuntu -c '\
-    pipx install conan && \
+RUN runuser -l ubuntu -c 'pipx install conan && \
     pipx ensurepath && \
     conan profile detect'
 
-RUN runuser -l ubuntu -c '\
-    cd && \
+RUN runuser -l ubuntu -c 'cd && \
     git clone https://github.com/maxoodf/colet_test.git && \
     cd colet_test && \
     cmake -B cmake-build-debug-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug && \
