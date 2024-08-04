@@ -17,14 +17,13 @@ RUN runuser -l ubuntu -c 'pipx install conan' && \
     runuser -l ubuntu -c 'pipx ensurepath' && \
     runuser -l ubuntu -c 'conan profile detect'
 
-RUN runuser -l ubuntu -c 'cd' && \
-    runuser -l ubuntu -c 'git clone https://github.com/maxoodf/colet_test.git' && \
-    runuser -l ubuntu -c 'cd colet_test' && \
-    runuser -l ubuntu -c 'cmake -B cmake-build-debug-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug' && \
-    runuser -l ubuntu -c 'cmake -B cmake-build-release-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Release' && \
-    runuser -l ubuntu -c 'cmake --build cmake-build-debug-colet --config Debug' && \
-    runuser -l ubuntu -c 'cmake --build cmake-build-release-colet --config Release'
-
+RUN runuser -l ubuntu -c 'cd && \
+    git clone https://github.com/maxoodf/colet_test.git && \
+    cd colet_test && \
+    cmake -B cmake-build-debug-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug && \
+    cmake -B cmake-build-release-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Release && \
+    cmake --build cmake-build-debug-colet --config Debug && \
+    cmake --build cmake-build-release-colet --config Release'
 
 EXPOSE 22
 
