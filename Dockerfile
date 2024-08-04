@@ -17,7 +17,7 @@ RUN runuser -l ubuntu -c 'pipx install conan' && \
     runuser -l ubuntu -c 'pipx ensurepath' && \
     runuser -l ubuntu -c 'conan profile detect'
 
-RUN runuser -l ubuntu -c 'cd'' && \
+RUN runuser -l ubuntu -c 'cd' && \
     runuser -l ubuntu -c 'git clone https://github.com/maxoodf/colet_test.git' && \
     runuser -l ubuntu -c 'cd colet_test' && \
     runuser -l ubuntu -c 'cmake -B cmake-build-debug-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug' && \
