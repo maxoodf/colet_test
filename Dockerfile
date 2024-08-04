@@ -23,7 +23,7 @@ RUN runuser -l ubuntu -c 'cd'' && \
     runuser -l ubuntu -c 'cmake -B cmake-build-debug-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Debug' && \
     runuser -l ubuntu -c 'cmake -B cmake-build-release-colet -S . -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=./cmake/conan_provider.cmake -DCMAKE_BUILD_TYPE=Release' && \
     runuser -l ubuntu -c 'cmake --build cmake-build-debug-colet --config Debug' && \
-    runuser -l ubuntu -c 'cmake --build cmake-build-release-colet --config Release' && \
+    runuser -l ubuntu -c 'cmake --build cmake-build-release-colet --config Release'
 
 
 EXPOSE 22
