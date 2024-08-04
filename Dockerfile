@@ -8,10 +8,10 @@ RUN apt-get update && apt-get upgrade -y && \
 RUN  echo 'ubuntu:password' | chpasswd && \
      echo 'root:password' | chpasswd
 
-#RUN mkdir /var/run/sshd && \
-#    sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-#    sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
-#    echo "export VISIBLE=now" >> /etc/profile
+RUN mkdir /var/run/sshd && \
+    sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
+    echo "export VISIBLE=now" >> /etc/profile
 
 RUN runuser -l ubuntu -c '\
     pipx install conan && \
