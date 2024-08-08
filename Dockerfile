@@ -14,8 +14,8 @@ RUN mkdir /var/run/sshd && \
     echo "export VISIBLE=now" >> /etc/profile
 
 RUN runuser -l ubuntu -c 'pipx install conan && \
-    pipx ensurepath && \
-    conan profile detect'
+    pipx ensurepath'
+RUN runuser -l ubuntu -c 'conan profile detect'
 
 RUN runuser -l ubuntu -c 'cd && \
     git clone https://github.com/maxoodf/colet_test.git && \
